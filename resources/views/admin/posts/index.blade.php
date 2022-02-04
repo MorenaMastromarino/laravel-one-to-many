@@ -47,6 +47,17 @@
   </table>
 
   {{$posts->links()}}
+
+  <div>
+    @foreach ($categories as $category)
+      <h2>{{$category->name}}</h2>
+      <ul>
+        @foreach ($category->posts as $post)
+          <li><a href="{{route('admin.posts.show', $post)}}">{{$post->title}}</a></li>
+        @endforeach
+      </ul>
+    @endforeach
+  </div>
 </div>
 @endsection
 

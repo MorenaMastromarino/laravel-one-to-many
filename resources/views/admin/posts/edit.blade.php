@@ -43,6 +43,18 @@
         </div>
       @enderror
     </div>
+    <div class="mb-3">
+      <label for="category_id" class="form-label">Categoria</label>
+      <select name="category_id" id="category_id" class="form-control">
+        <option>Seleziona la categoria</option>
+        @foreach ($categories as $category)
+          <option @if ($category->id == old('category_id', $post->category_id)) selected @endif value="{{$category->id}}">
+            {{$category->name}}
+          </option>            
+        @endforeach
+
+      </select>
+    </div>
 
     <button type="submit" class="btn btn-success">EDIT</button>
     <button type="reset" class="btn btn-secondary">RESET</button>

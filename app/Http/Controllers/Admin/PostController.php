@@ -16,8 +16,9 @@ class PostController extends Controller
      */
     public function index()
     {
+        $categories = Category::all();
         $posts = Post::orderBy('id', 'desc')->paginate(5);
-        return view('admin.posts.index', compact('posts'));
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**
@@ -76,10 +77,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
+        $categories = Category::all();
+
         $post = Post::find($id);
 
         if($post){
-            return view('admin.posts.edit', compact('post'));
+            return view('admin.posts.edit', compact('post', 'categories'));
         }
         abort(404);
     }
